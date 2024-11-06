@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% block head %}
+<link rel="stylesheet" href="../static/css/player.css">
+{% endblock head %}
+{% block content %}
+
+<div id="player-parent">
+  <iframe id="player" type="text/html"
+    src="http://www.youtube.com/embed/{{query}}?enablejsapi=1&origin=http://example.com" frameborder="0"></iframe>
+
+  <div id="details">
+    <h1>{{title}}</h1>
+    <div class="bar">
+      <img src="" alt="Not Found">
+      <span>{{channel_name}}</span>
+      <span>{{duration}}</span>
+    </div>
+    <div class="description">
+      <span>{{views}}</span>
+      <span>{{upload_time}}</span>
+      <p>{{description}}</p>`
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

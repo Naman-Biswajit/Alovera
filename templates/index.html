@@ -1,12 +1,17 @@
-<!-- component -->
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/root.css">
+  {% block head %}
+  {% endblock head %}
+
 </head>
+
 <body class="bg-gray-100">
   <nav class="bg-blue-500 p-4 flex items-center justify-between">
     <div>
@@ -18,29 +23,36 @@
     </div>
   </nav>
 
-  <aside class="bg-gray-800 text-white w-64 min-h-screen p-4">
-    <nav>
-      <ul class="space-y-2">
-        <li class="option-dropdown">
-          <div class="flex items-center justify-between p-2 hover:bg-gray-700">
-            <div class="flex items-center">
-              <i class="fas fa-calendar-alt mr-2"></i>
-              <span>Foo</span>
+  <section class="content-wrapper">
+    <aside class="bg-gray-800 text-white min-h-screen p-4">
+      <nav>
+        <ul class="space-y-2">
+          <li class="option-dropdown">
+            <div class="flex items-center justify-between p-2 hover:bg-gray-700">
+              <div class="flex items-center">
+                <i class="fas fa-calendar-alt mr-2"></i>
+                <span>Foo</span>
+              </div>
+              <i class="fas fa-chevron-down text-xs"></i>
             </div>
-            <i class="fas fa-chevron-down text-xs"></i>
-          </div>
-          <ul class="dropdown ml-4 hidden">
-            <li>
-              <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
-                <i class="fas fa-chevron-right mr-2 text-xs"></i>
-                bar
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-  </aside>
+            <ul class="dropdown ml-4 hidden">
+              <li>
+                <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
+                  <i class="fas fa-chevron-right mr-2 text-xs"></i>
+                  bar
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <section class="content">
+      {% block content %}
+      {% endblock content %}
+    </section>
+  </section>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -56,4 +68,5 @@
     });
   </script>
 </body>
+
 </html>
