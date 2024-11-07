@@ -1,21 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
 
-.content {
-    display: grid;
-    justify-items: center;
-    grid-template-rows: 9fr 1fr;
-}
-
-#player-parent {
-    background: green;
-}
-
-#details {
+.player-parent {
     max-width: calc(var(--min-flex) * 128);
+}
+
+.details {
     font-size: large;
 }
-#player {
+
+.title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0.4rem 0;
+}
+
+.bar {
+    display: flexbox;
+}
+
+
+.player {
+    font-family: "Roboto Flex", serif;
     width: calc(var(--min-flex) * 128);
     height: calc(var(--min-flex) * 72);
-    margin: 1em 1em;
+    margin: 2em 0 1em;
+}
+
+.name {
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    background: #8d9cb1;
+    border: 1px solid darkslategrey;
+    border-radius: 25px;
+    padding: 0.5rem;
+}
+
+.upload-duration {
+    float: right;
+    font-weight: 800;
+    margin: 0 1rem;
+}
+
+hr {
+    border-top: 3px solid #ee6c4d;
+    margin: 1rem 0;
+}
+
+pre {
+    /* max-width: calc(var(--min-flex) * 128); */
+    overflow-x: break-word;
+    
 }

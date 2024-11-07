@@ -4,21 +4,21 @@
 {% endblock head %}
 {% block content %}
 
-<div id="player-parent">
-  <iframe id="player" type="text/html"
+<div class="player-parent">
+  <iframe class="player" type="text/html"
     src="http://www.youtube.com/embed/{{query}}?enablejsapi=1&origin=http://example.com" frameborder="0"></iframe>
 
-  <div id="details">
-    <h1>{{title}}</h1>
+  <div class="details">
+    <h1 class="title">{{ video.title }}</h1>
     <div class="bar">
-      <img src="" alt="Not Found">
-      <span>{{channel_name}}</span>
-      <span>{{duration}}</span>
+      <button><span class="name">{{ video.channel_name }}</span></button>
+      <span class="upload-duration">·{{ video.upload_duration }}</span>
     </div>
+    <hr>
     <div class="description">
-      <span>{{views}}</span>
-      <span>{{upload_time}}</span>
-      <p>{{description}}</p>`
+      <span>{{ video.views }}</span>
+      <span>{{ video.upload_time }}</span>
+      <span><pre>{{ video.description }}</pre></span>
     </div>
   </div>
 </div>

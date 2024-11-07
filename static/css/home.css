@@ -1,0 +1,41 @@
+.home-wrap {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, calc(var(--min-flex) * 52));
+    background-color: yellow;
+    width: 100%;
+    gap: 1.2rem;
+    padding: 2rem;
+}
+
+.title {
+    font-weight: 500;
+}
+
+.thumbnail {
+    height: calc(var(--min-flex) * 29);
+    width: calc(var(--min-flex) * 52);
+}
+
+.logo {
+    height: calc(var(--min-flex) * 6);
+    width: calc(var(--min-flex) * 6);
+    border-radius: 2rem;
+}
+
+.bar, .footer {
+    display: flex;
+    margin: 3px;
+    gap: 10px;
+}
+
+.footer, .channel-name {
+    font-size: 0.9rem;
+    color: black;
+    font-weight: bold;
+    margin-left: calc(var(--min-flex)*8);
+}
+
+
+.video {
+    width: calc(var(--min-flex) * 52);
+}

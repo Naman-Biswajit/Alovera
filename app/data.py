@@ -1,9 +1,8 @@
 import os
-import json
+
 from dotenv import load_dotenv
 from googleapiclient.discovery import build
-from pprint import pprint
-
+from utils import duration
 
 class YT_Data():
     def __init__(self):
@@ -32,9 +31,12 @@ class YT_Data():
                 "description": snippet["description"],
                 "published_at": snippet["publishedAt"],
                 "channel_name": snippet["channelTitle"],
-                "channel_id": snippet["channelId"]
+                "channel_id": snippet["channelId"],
+                "upload_duration": duration(snippet["publishedAt"]),
+                "thumbnail": snippet["thumbnails"]["medium"]["url"]
                 })
-
+            
+        print(str(processed[0]["description"]))
         return processed
     
         
@@ -50,9 +52,3 @@ class YT_Data():
         results = self.format_data(results, single_request=True)
         return results
     
-if __name__ == "__main__":
-    api = YT_Data()
-    result = api.fetch_video(query="ZT1MVkKLZh0")
-    result2 = api.search("Science Videos")
-    pprint(result)
-    pprint(result2)

@@ -1,5 +1,6 @@
 html {
     --min-flex: min(1vh, 1vw);
+    font-size: 20px;
 }
 
 .content-wrapper {
@@ -8,5 +9,7 @@ html {
 }
 
 .content {
-    background: red;
+    display: grid;
+    justify-items: center;
+    grid-template-rows: 9fr 1fr;
 }
