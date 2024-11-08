@@ -9,7 +9,13 @@ class YT_Data():
         load_dotenv()
         self.youtube = build("youtube", "v3", developerKey=os.environ.get("API_KEY"))
         self.searcher = self.youtube.search()
+        self.channels = self.youtube.channels()
         self.videos = self.youtube.videos()
+    
+    def channel_logo(self, channel_id, resolution: str = "default"):
+        req = self.channels.list(id=channel_id, part="snippet")
+        response = req.execute()
+        return response["items"][0]["snippet"]["thumbnails"][f"{resolution}"]["url"]
     
     def format_data(self, data: str, single_request=False):
         
@@ -18,12 +24,12 @@ class YT_Data():
         for item in data["items"]:
             if single_request:
                 kind = item["kind"].split('#')[1]
+                id = item["id"]
             else:
                 kind = item["id"]["kind"].split('#')[1]
+                id = list(item["id"].keys())[1]
             
             snippet = item["snippet"]
-            id = item["id"]
-            
             processed.append({
                 "kind" : kind,
                 "id" : id,
@@ -33,10 +39,10 @@ class YT_Data():
                 "channel_name": snippet["channelTitle"],
                 "channel_id": snippet["channelId"],
                 "upload_duration": duration(snippet["publishedAt"]),
-                "thumbnail": snippet["thumbnails"]["medium"]["url"]
+                "thumbnail": snippet["thumbnails"]["medium"]["url"],
+                "logo" : self.channel_logo(snippet["channelId"])
                 })
             
-        print(str(processed[0]["description"]))
         return processed
     
         
@@ -52,3 +58,12 @@ class YT_Data():
         results = self.format_data(results, single_request=True)
         return results
     
+    
+if __name__ == "__main__":
+    import json
+    api = YT_Data()
+    res = api.fetch_video("GwyXQO0tSW4")
+    s = json.dumps(res)
+    
+    with open("./static/test.json", "w+") as f:
+        f.write(s)

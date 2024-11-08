@@ -1,7 +1,6 @@
 .home-wrap {
     display: grid;
     grid-template-columns: repeat(auto-fit, calc(var(--min-flex) * 52));
-    background-color: yellow;
     width: 100%;
     gap: 1.2rem;
     padding: 2rem;
@@ -22,13 +21,15 @@
     border-radius: 2rem;
 }
 
-.bar, .footer {
+.bar,
+.footer {
     display: flex;
     margin: 3px;
     gap: 10px;
 }
 
-.footer, .channel-name {
+.footer,
+.channel-name {
     font-size: 0.9rem;
     color: black;
     font-weight: bold;
@@ -36,6 +37,29 @@
 }
 
 
-.video {
+.card {
+    position: relative;
     width: calc(var(--min-flex) * 52);
+}
+
+.playlist-overlay {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    right: 0;
+    background-color: rgba(34, 255, 163, 0.37);
+    height: calc(var(--min-flex) * 29);
+    width: calc(var(--min-flex) * 26);
+}
+
+.fa-list {
+    color: white;
+    background-color: black;
+    border: 5px solid black;
+    border-radius: 5rem;
+    padding: 0.8rem;
+    opacity: 1;
+    font-size: 2rem;
 }

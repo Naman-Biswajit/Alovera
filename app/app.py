@@ -7,8 +7,9 @@ app = Flask(__name__, template_folder="../templates", static_folder="../static")
 api = YT_Data()
 
 @app.route("/")
-def hello_world():
-    return render_template("home.html")
+def home():
+    response = api.search("3Blue1Brown")
+    return render_template("home.html", search_response=response)
 
 @app.route("/watch")
 def video_player():
