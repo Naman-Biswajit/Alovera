@@ -28,5 +28,9 @@ def player():
 
     return render_template("player.html", query=query, video=response, playlist=is_playlist)
 
+# for testing and rewriting index folder: 
+@app.route("/index")
+def index():
+    return render_template("index.html")
 if __name__ == "__main__":
     app.run(debug=True)
