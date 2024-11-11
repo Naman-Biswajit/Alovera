@@ -12,10 +12,21 @@ def home():
     return render_template("home.html", search_response=response)
 
 @app.route("/watch")
-def video_player():
+def player():
     query = request.args.get('play')
-    response = api.fetch_video(query)[0]
-    return render_template("player.html", query=query, video=response)
+    is_playlist = request.args.get('playlist', 'false').lower()
+    index = int(request.args.get('index', '1'))
+    
+    if is_playlist == 'true':
+        is_playlist = True
+        api.fetch_playlist(query, indexc)
+    else:
+        is_playlist = False
+        response = api.fetch_video(query)
+        
+    response = response[0]
+
+    return render_template("player.html", query=query, video=response, playlist=is_playlist)
 
 if __name__ == "__main__":
     app.run(debug=True)

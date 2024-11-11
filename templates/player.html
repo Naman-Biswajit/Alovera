@@ -5,8 +5,15 @@
 {% block content %}
 
 <div class="player-parent">
+  {% if playlist %}
   <iframe class="player" type="text/html"
-    src="http://www.youtube.com/embed/{{query}}?enablejsapi=1&origin=http://example.com" frameborder="0"></iframe>
+    src="https://www.youtube.com/embed/?listType=playlist&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi"
+    frameborder="0"></iframe>
+
+  {% else %}
+  <iframe class="player" type="text/html"
+  src="http://www.youtube.com/embed/{{query}}" frameborder="0"></iframe>
+  {% endif %}
 
   <div class="details">
     <h1 class="title">{{ video.title }}</h1>
@@ -18,7 +25,9 @@
     <div class="description">
       <span>{{ video.views }}</span>
       <span>{{ video.upload_time }}</span>
-      <span><pre>{{ video.description }}</pre></span>
+      <span>
+        <pre>{{ video.description }}</pre>
+      </span>
     </div>
   </div>
 </div>

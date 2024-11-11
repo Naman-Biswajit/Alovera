@@ -11,7 +11,6 @@
     <div class="card">
         channel
     </div>
-
     {% else %}
     <div class="card">
         {% if element.kind == "playlist" %}
@@ -30,8 +29,8 @@
         </div>
         <h2 class="channel-name">{{ element.channel_name }}</h2>
         <div class="footer">
-            <h2 class="views">{{ element.views }}</h2>
-            <!-- <h2 class="upload-duration"> ·{{ element.upload_duration}} </h2> -->
+            <!-- <h2 class="views">{{ element.views }}</h2> -->
+            <h2 class="upload-duration"> ·{{ element.upload_duration}} </h2>
         </div>
     </div>
     {% endif %}

@@ -11,6 +11,7 @@ class YT_Data():
         self.searcher = self.youtube.search()
         self.channels = self.youtube.channels()
         self.videos = self.youtube.videos()
+        self.playlists_items = self.youtube.playlistItems()
     
     def channel_logo(self, channel_id, resolution: str = "default"):
         req = self.channels.list(id=channel_id, part="snippet")
@@ -27,7 +28,8 @@ class YT_Data():
                 id = item["id"]
             else:
                 kind = item["id"]["kind"].split('#')[1]
-                id = list(item["id"].keys())[1]
+                id = list(item["id"].values())[1]
+            print(id)
             
             snippet = item["snippet"]
             processed.append({
@@ -52,18 +54,20 @@ class YT_Data():
         results = self.format_data(results)
         return results
     
-    def fetch_video(self, query, part="snippet"):
-        req = self.videos.list(id=query, part=part)
+    def fetch_video(self, id, part="snippet"):
+        req = self.videos.list(id=id, part=part)
         results = req.execute()
         results = self.format_data(results, single_request=True)
         return results
     
+    def fetch_playlist(self, id, index=1, part="snippet"):
+        req = self.playlists_items.list(part="snippet", id=id)
+        results = req.execute()
+        return results
     
 if __name__ == "__main__":
-    import json
     api = YT_Data()
-    res = api.fetch_video("GwyXQO0tSW4")
-    s = json.dumps(res)
-    
-    with open("./static/test.json", "w+") as f:
-        f.write(s)
+    result = api.fetch_playlist("PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi")
+
+    from pprint import pprint
+    pprint(result)
