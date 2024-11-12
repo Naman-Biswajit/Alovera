@@ -1,18 +1,15 @@
 {% extends 'index.html' %}
 {% block head %}
 <link rel="stylesheet" href="../static/css/home.css">
+<link rel="stylesheet" href="../static/css/search.css">
 {% endblock head %}
-
 
 {% block content %}
 <div class="home-wrap">
     {% for element in response %}
     {% if element.kind == "channel"%}
     <div class="card">
-        <div class="channel">
-            <img src="{{element.thumbnail}}" alt="">
-            {{element.description}}
-        </div>
+        channel
     </div>
     {% else %}
     <div class="card">
@@ -38,5 +35,11 @@
     </div>
     {% endif %}
     {% endfor %}
+
 </div>
+
+    <script>
+        document.getElementById("search-bar").value = 
+    </script>    
+
 {% endblock content %}

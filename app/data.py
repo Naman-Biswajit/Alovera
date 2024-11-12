@@ -18,6 +18,8 @@ class YT_Data():
         response = req.execute()
         return response["items"][0]["snippet"]["thumbnails"][f"{resolution}"]["url"]
     
+    # def channel_details(self, channel_id, part="snippet"):
+        
     def format_data(self, data: str, single_request=False):
         
         processed = []
@@ -29,7 +31,6 @@ class YT_Data():
             else:
                 kind = item["id"]["kind"].split('#')[1]
                 id = list(item["id"].values())[1]
-            print(id)
             
             snippet = item["snippet"]
             processed.append({
@@ -45,6 +46,8 @@ class YT_Data():
                 "logo" : self.channel_logo(snippet["channelId"])
                 })
             
+            # if kind == "channel":
+                
         return processed
     
         
@@ -71,3 +74,4 @@ if __name__ == "__main__":
 
     from pprint import pprint
     pprint(result)
+    

@@ -19,8 +19,8 @@
     </div>
 
     <div class="search">
-      <form class="search-form">
-          <input type="text" id="simple-search" class="search-bar" placeholder="Search for Videos" required />
+      <form class="search-form" method="GET" action="/search">
+        <input name="q" type="text" id="search-bar" placeholder="Search for Videos" required />
         <button type="submit" class="submit-btn">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>

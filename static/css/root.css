@@ -17,7 +17,7 @@ html {
 
 /* Search */
 
-.search-bar {
+#search-bar {
     display: block;
     padding: 0.625rem;
     border-radius: 0.5rem;
