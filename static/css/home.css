@@ -37,19 +37,15 @@
 }
 
 
-.card {
-    position: relative;
-    width: calc(var(--min-flex) * 52);
-}
-
 .playlist-overlay {
     display: flex;
     position: absolute;
     justify-content: center;
     align-items: center;
     z-index: 1;
-    right: 0;
-    background-color: rgba(34, 255, 163, 0.37);
+    /* left: 0; */
+    /* right: ; */
+    background-color: var(--theme-colour-3-alpha);
     height: calc(var(--min-flex) * 29);
     width: calc(var(--min-flex) * 26);
 }
@@ -62,4 +58,12 @@
     padding: 0.8rem;
     opacity: 1;
     font-size: 2rem;
+}
+
+.video-click {
+    z-index: 10;
+}
+
+.channel {
+    display: none;
 }

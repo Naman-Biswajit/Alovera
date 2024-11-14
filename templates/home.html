@@ -7,36 +7,45 @@
 {% block content %}
 <div class="home-wrap">
     {% for element in response %}
+
     {% if element.kind == "channel"%}
-    <div class="card">
-        <div class="channel">
-            <img src="{{element.thumbnail}}" alt="">
-            {{element.description}}
-        </div>
+    <div class="channel card">
+        <img class="channel_logo" src="{{element.thumbnail}}" alt="">
+        <h3>{{element.description | safe}}</h3>
     </div>
     {% else %}
-    <div class="card">
-        {% if element.kind == "playlist" %}
-        <div class="playlist-overlay">
-            <i class="fa-solid fa-list"></i>
-        </div>
 
-        {% else %}
-        <a href="/watch?play={{element.id}}">
-            {% endif %}
-            <img src="{{ element.thumbnail }}" alt="" class="thumbnail">
-        </a>
-        <div class="bar">
-            <img src="{{ element.logo }}" alt="" class="logo">
-            <h1 class="title"> {{element.title}} </h1>
+    <div class="card">
+        <div class="thumbnail-aisde">
+        {% if element.kind == "playlist" %}
+            <a href="/watch?play={{element.id}}&playlist=true" class="video-click">
+                <div class="playlist-overlay">
+                    <i class="fa-solid fa-list"></i>
+                </div>
+
+                {% else %}
+                <a class="video-click" href="/watch?play={{element.id}}">
+                    {% endif %}
+
+                    <img src="{{ element.thumbnail }}" alt="" class="thumbnail">
+                </a>
         </div>
-        <h2 class="channel-name">{{ element.channel_name }}</h2>
-        <div class="footer">
-            <!-- <h2 class="views">{{ element.views }}</h2> -->
-            <h2 class="upload-duration"> ·{{ element.upload_duration}} </h2>
+        <div class="info-aside">
+            <div class="bar">
+                <img src="{{ element.logo }}" alt="" class="logo">
+                <h1 class="title"> {{element.title | safe}} </h1>
+            </div>
+            <h2 class="channel-name">{{ element.channel_name | safe }}</h2>
+            <div class="footer">
+                <!-- <h2 class="views">{{ element.views }}</h2> -->
+                <h2 class="upload-duration"> ·{{ element.upload_duration}} </h2>
+            </div>
         </div>
     </div>
     {% endif %}
+
     {% endfor %}
+
+    {% block content_add %}{% endblock content_add %}
 </div>
 {% endblock content %}

@@ -1,45 +1,11 @@
-{% extends 'index.html' %}
+{% extends 'home.html' %}
 {% block head %}
 <link rel="stylesheet" href="../static/css/home.css">
 <link rel="stylesheet" href="../static/css/search.css">
 {% endblock head %}
 
-{% block content %}
-<div class="home-wrap">
-    {% for element in response %}
-    {% if element.kind == "channel"%}
-    <div class="card">
-        channel
-    </div>
-    {% else %}
-    <div class="card">
-        {% if element.kind == "playlist" %}
-        <div class="playlist-overlay">
-            <i class="fa-solid fa-list"></i>
-        </div>
-
-        {% else %}
-        <a href="/watch?play={{element.id}}">
-            {% endif %}
-            <img src="{{ element.thumbnail }}" alt="" class="thumbnail">
-        </a>
-        <div class="bar">
-            <img src="{{ element.logo }}" alt="" class="logo">
-            <h1 class="title"> {{element.title}} </h1>
-        </div>
-        <h2 class="channel-name">{{ element.channel_name }}</h2>
-        <div class="footer">
-            <!-- <h2 class="views">{{ element.views }}</h2> -->
-            <h2 class="upload-duration"> ·{{ element.upload_duration}} </h2>
-        </div>
-    </div>
-    {% endif %}
-    {% endfor %}
-
-</div>
-
+{% block content_add %}
     <script>
-        document.getElementById("search-bar").value = 
-    </script>    
-
-{% endblock content %}
+        document.getElementById("search-bar").value = "{{query}}"
+    </script>
+{% endblock content_add %}

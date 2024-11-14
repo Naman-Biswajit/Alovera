@@ -52,7 +52,7 @@ class YT_Data():
     
         
     def search(self, query, part="snippet", **params):
-        req = self.searcher.list(q=query, part=part, **params)
+        req = self.searcher.list(q=query, part=part, **params, maxResults=5)
         results = req.execute()
         results = self.format_data(results)
         return results

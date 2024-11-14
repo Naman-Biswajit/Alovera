@@ -1,6 +1,10 @@
 html {
     --min-flex: min(1vh, 1vw);
     font-size: 20px;
+    --theme-colour-1: #111827;
+    --theme-colour-2: #ffb703;
+    --theme-colour-3: #219ebc;
+    --theme-colour-3-alpha: #219dbc7a;
 }
 
 .content-wrapper {
@@ -21,12 +25,12 @@ html {
     display: block;
     padding: 0.625rem;
     border-radius: 0.5rem;
-    border: 1px solid #D1D5DB;
+    border: 1px solid whitesmoke;
     width: 100%;
     font-size: 0.875rem;
     line-height: 1.25rem;
-    color: #111827;
-    background-color: #F9FAFB;
+    color: var(--theme-colour-1);
+    background-color: white;
 }
 
 .submit-btn {
@@ -34,9 +38,9 @@ html {
     margin: 0 0.7rem;
     padding: 0.625rem;
     border-radius: 0.5rem;
-    border: 1x solid #1f2937;
-    color: #ffffff;
-    background-color: #1f2937;
+    border: 1x solid var(--theme-colour-1);
+    color: white;
+    background-color: var(--theme-colour-1);
 }
 
 .submit-btn:hover {
@@ -50,7 +54,7 @@ html {
 }
 
 .fa-gear {
-    font-size: 1.5rem;
+    font-size: 2rem;
     line-height: 2rem; 
-    color: #ffffff; 
+    color: var(theme-colour-2); 
 }
