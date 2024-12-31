@@ -11,8 +11,9 @@ class YT_Data():
         self.searcher = self.youtube.search()
         self.channels = self.youtube.channels()
         self.videos = self.youtube.videos()
-        self.playlists_items = self.youtube.playlistItems()
-    
+        self.playlist = self.youtube.playlists()
+        
+
     def channel_logo(self, channel_id, resolution: str = "default"):
         req = self.channels.list(id=channel_id, part="snippet")
         response = req.execute()
@@ -46,7 +47,6 @@ class YT_Data():
                 "logo" : self.channel_logo(snippet["channelId"])
                 })
             
-            # if kind == "channel":
                 
         return processed
     
@@ -64,8 +64,9 @@ class YT_Data():
         return results
     
     def fetch_playlist(self, id, index=1, part="snippet"):
-        req = self.playlists_items.list(part="snippet", id=id)
+        req = self.playlist.list(part=part, id=id)
         results = req.execute()
+        results = self.format_data(results, single_request=True)
         return results
     
 if __name__ == "__main__":

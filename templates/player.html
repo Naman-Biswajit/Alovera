@@ -5,15 +5,17 @@
 {% block content %}
 
 <div class="player-parent">
-  {% if playlist %}
-  <iframe class="player" type="text/html"
-    src="https://www.youtube.com/embed/?listType=playlist&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi"
-    frameborder="0" allowfullscreen></iframe>
+  <iframe class="player" src="https://www.youtube.com/embed/{{search_tag}}{{id}}" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+  </iframe>
+  <!-- <iframe class="player" type="text/html" src="http://www.youtube.com/embed/{{id}}" frameborder="0"
+    allowfullscreen></iframe> -->
 
-  {% else %}
-  <iframe class="player" type="text/html"
-  src="http://www.youtube.com/embed/{{video_id}}" frameborder="0" allowfullscreen></iframe>
-  {% endif %}
+<!-- <iframe src="https://www.youtube.com/embed/videoseries?list={{id}}" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+  </iframe>
+  <iframe class="player" type="text/html" src="http://www.youtube.com/embed/{{id}}" frameborder="0"
+    allowfullscreen></iframe> -->
 
   <div class="details">
     <h1 class="title">{{ video.title }}</h1>
@@ -25,9 +27,7 @@
     <div class="description">
       <span>{{ video.views }}</span>
       <span>{{ video.upload_time }}</span>
-      <span>
-        <pre>{{ video.description }}</pre>
-      </span>
+      <pre class="description-text">{{ video.description }}</pre>
     </div>
   </div>
 </div>

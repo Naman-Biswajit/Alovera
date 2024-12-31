@@ -48,7 +48,7 @@ hr {
 }
 
 pre {
-    /* max-width: calc(var(--min-flex) * 128); */
-    overflow-x: break-word;
-    
+    width: calc(var(--min-flex) * 128);
+    word-wrap: break-word;
+    white-space: pre-wrap
 }

@@ -1,10 +1,19 @@
+import logging
+
 from flask import Flask
 from flask import render_template, request, redirect, url_for
 
 from data import YT_Data
 
+
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
 api = YT_Data()
+logging.basicConfig(
+    filename="app.log",  # Log file name
+    level=logging.DEBUG,  # Logging level
+    format="%(asctime)s - %(levelname)s - %(message)s"  # Log format
+)
+
 
 @app.route("/")
 def home():
@@ -19,14 +28,19 @@ def player():
     
     if is_playlist == "true":
         is_playlist = True
-        api.fetch_playlist(id, index)
+        tag_query = "videoseries?list="
+        response = api.fetch_playlist(id)
+        
     else:
         is_playlist = False
+        tag_query = ""
         response = api.fetch_video(id)
         
     response = response[0]
-
-    return render_template("player.html", video_id=id, video=response, playlist=is_playlist)
+    logging.debug(response, tag_query)
+    logging.debug(id)
+    
+    return render_template("player.html", search_tag=tag_query, id=id, video=response, playlist=is_playlist)
 
 @app.route("/search")
 def search():
